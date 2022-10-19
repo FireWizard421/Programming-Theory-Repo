@@ -7,6 +7,7 @@ public class MainMenuHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject mainMenuText;
+    [SerializeField] GameObject factoryNamingText;
     void Start()
     {
         
@@ -30,5 +31,17 @@ public class MainMenuHandler : MonoBehaviour
     public void FactorySelection()
     {
         mainMenuText.SetActive(false);
+        factoryNamingText.SetActive(true);
+    }
+
+    public void BackToMenu()
+    {
+        mainMenuText.SetActive(true);
+        factoryNamingText.SetActive(false);
+    }
+
+    public void ColorSelect(Color color)
+    {
+        Debug.Log("Works");
     }
 }
