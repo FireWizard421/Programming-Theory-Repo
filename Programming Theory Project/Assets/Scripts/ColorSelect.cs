@@ -21,6 +21,6 @@ public class ColorSelect : MonoBehaviour
     {
         color = button.image.color;
         text.text = "X";
-        mainMenuHandler.ColorSelect(color);
+        mainMenuHandler.ColorSelect(color, text);
     }
 }
