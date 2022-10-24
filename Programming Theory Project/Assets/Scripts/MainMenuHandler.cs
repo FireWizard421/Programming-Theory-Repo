@@ -44,6 +44,7 @@ public class MainMenuHandler : MonoBehaviour
         mainMenuText.SetActive(true);
         factoryNamingText.SetActive(false);
     }
+    //ABSTRACTION
     public void ColorSelect(Color color, TextMeshProUGUI text)
     {
         if (hasBeenClicked)

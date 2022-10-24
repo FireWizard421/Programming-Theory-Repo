@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 public class MainManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    //ENCAPSULATION
     public static MainManager Instance { get; private set; }
     public Color factoryColor;
     public string factoryName;
