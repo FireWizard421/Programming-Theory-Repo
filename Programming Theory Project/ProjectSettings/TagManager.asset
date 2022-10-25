@@ -7,6 +7,8 @@ TagManager:
   - Iron
   - Ending Pad
   - Spawner
+  - Conveyor Belt
+  - Resource
   layers:
   - Default
   - TransparentFX
