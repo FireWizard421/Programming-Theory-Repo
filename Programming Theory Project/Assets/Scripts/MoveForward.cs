@@ -31,7 +31,7 @@ public class MoveForward : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Conveyor Belt"))
+        if (collision.gameObject.CompareTag("Conveyor Belt") || collision.gameObject.CompareTag("Spawner"))
         {
             isOnConveyorBelt = true;
         }
@@ -45,11 +45,11 @@ public class MoveForward : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Ending Pad"))
         {
-            if (gameObject.name == "Iron")
+            if (gameObject.name == "Iron(Clone)")
             {
                 mainHandler.moneyValue += 50;
             }
-            else if (gameObject.name == "Gold")
+            else if (gameObject.name == "Gold(Clone)")
             {
                 mainHandler.moneyValue += 100;
             }
