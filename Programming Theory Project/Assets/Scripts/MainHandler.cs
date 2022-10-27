@@ -58,7 +58,7 @@ public class MainHandler : MonoBehaviour
 
     public void UpgradeConveyor()
     {
-        if (!upgradeConveyerHasBeenClicked && moneyValue > 5000)
+        if (!upgradeConveyerHasBeenClicked && moneyValue >= 5000)
         {
             conveyorSpeed = 10.0f;
             moneyValue -= 5000;
@@ -78,9 +78,10 @@ public class MainHandler : MonoBehaviour
 
     public void UpgradeResource()
     {
-        if(!upgradeResourceHasBeenClicked && moneyValue > 1000)
+        if(!upgradeResourceHasBeenClicked && moneyValue >= 1000)
         {
             factoryResourceLevel = 1;
+            moneyValue -= 1000;
             upgradeResourceHasBeenClicked = true;
         }
         else if(moneyValue < 1000)
