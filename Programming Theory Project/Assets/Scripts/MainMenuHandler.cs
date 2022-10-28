@@ -26,6 +26,14 @@ public class MainMenuHandler : MonoBehaviour
     // Update is called once per frame
     public void Exit()
     {
+        if (!MainManager.Instance.loadGameUsed)
+        {
+            MainManager.Instance.SaveGame();
+        }
+        else
+        {
+            return;
+        }
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else

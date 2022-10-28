@@ -11,7 +11,10 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance { get; private set; }
     public Color factoryColor;
     public string factoryName;
-    public int currentLevel;
+    public int moneyValue;
+    public bool resourceUpgrade = false;
+    public bool conveyorUpgrade = false;
+    public bool loadGameUsed = false;
 
     public void Awake()
     {
@@ -26,17 +29,21 @@ public class MainManager : MonoBehaviour
     [System.Serializable]
     class SaveData
     {
-        public string factoryNameS;
-        public int currentLevelS;
-        public Color factoryColorS;
+        public string factoryName;
+        public int moneyValue;
+        public Color factoryColor;
+        public bool resourceUpgrade;
+        public bool conveyorUpgrade;
     }
 
     public void SaveGame()
     {
         SaveData data = new SaveData();
-        data.factoryColorS = factoryColor;
-        data.factoryNameS = factoryName;
-        data.currentLevelS = currentLevel;
+        data.factoryColor = factoryColor;
+        data.factoryName = factoryName;
+        data.moneyValue = moneyValue;
+        data.resourceUpgrade = resourceUpgrade;
+        data.conveyorUpgrade = conveyorUpgrade;
 
         string json = JsonUtility.ToJson(data);
 
@@ -45,6 +52,7 @@ public class MainManager : MonoBehaviour
 
     public void LoadGame()
     {
+        loadGameUsed = true;
         string path = Application.persistentDataPath + "/savefile.json";
         if (File.Exists(path))
         {
@@ -52,9 +60,11 @@ public class MainManager : MonoBehaviour
 
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            factoryName = data.factoryNameS;
-            currentLevel = data.currentLevelS;
-            factoryColor = data.factoryColorS;
+            factoryName = data.factoryName;
+            moneyValue = data.moneyValue;
+            factoryColor = data.factoryColor;
+            resourceUpgrade = data.resourceUpgrade;
+            conveyorUpgrade = data.conveyorUpgrade;
         }
     }
 }

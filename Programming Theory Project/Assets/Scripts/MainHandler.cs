@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainHandler : MonoBehaviour
 {
@@ -20,9 +21,24 @@ public class MainHandler : MonoBehaviour
     private bool upgradeResourceHasBeenClicked = false;
     [SerializeField] GameObject notEnoughMoneyWindow;
     [SerializeField] GameObject alreadyClickedText;
+    private string factoryName;
+    private Color spawnerColor;
+    [SerializeField] GameObject spawnerObject1;
+    [SerializeField] GameObject spawnerObject2;
+    [SerializeField] GameObject spawnerObject3;
+    [SerializeField] TextMeshProUGUI factoryNameText;
     void Start()
     {
-        
+        spawnerColor = MainManager.Instance.factoryColor;
+        upgradeConveyerHasBeenClicked = MainManager.Instance.conveyorUpgrade;
+        upgradeResourceHasBeenClicked = MainManager.Instance.resourceUpgrade;
+        moneyValue = MainManager.Instance.moneyValue;
+        factoryName = MainManager.Instance.factoryName;
+
+        spawnerObject1.GetComponent<Renderer>().material.color = spawnerColor;
+        spawnerObject2.GetComponent<Renderer>().material.color = spawnerColor;
+        spawnerObject3.GetComponent<Renderer>().material.color = spawnerColor;
+        factoryNameText.text = factoryName + " Factory";
     }
 
     // Update is called once per frame
@@ -108,5 +124,11 @@ public class MainHandler : MonoBehaviour
         GameObject other = alreadyClickedText;
         yield return new WaitForSeconds(2.0f);
         other.SetActive(false);
+    }
+
+    public void Menu()
+    {
+        MainManager.Instance.SaveGame();
+        SceneManager.LoadScene(0);
     }
 }
